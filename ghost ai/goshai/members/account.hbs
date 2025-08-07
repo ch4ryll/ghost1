@@ -1,0 +1,16 @@
+{{!< default}}
+
+<section class="member-account">
+  <h1>Akun Anda</h1>
+
+  {{#if @member}}
+    <p>Halo, {{@member.email}}</p>
+    <p>Anda telah menjadi anggota sejak {{date @member.created_at format="DD MMM YYYY"}}</p>
+
+    <form class="gh-signout" method="post" action="/members/signout/">
+      <button type="submit">Keluar</button>
+    </form>
+  {{else}}
+    <p>Anda belum masuk. <a href="/#/portal/account">Masuk di sini</a></p>
+  {{/if}}
+</section>

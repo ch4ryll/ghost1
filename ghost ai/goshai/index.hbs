@@ -1,0 +1,25 @@
+{{!< default}}
+
+<main class="index-page">
+    {{#if @custom.homepage_hero}}
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>{{@custom.hero_title}}</h1>
+            <p>{{@custom.hero_description}}</p>
+            {{#if @custom.hero_button_text}}
+            <a href="{{@custom.hero_button_link}}" class="button">
+                {{@custom.hero_button_text}}
+            </a>
+            {{/if}}
+        </div>
+    </section>
+    {{/if}}
+
+    <section class="post-feed">
+        {{#foreach posts}}
+            {{> "post-card"}}
+        {{/foreach}}
+    </section>
+
+    {{pagination}}
+</main>

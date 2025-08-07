@@ -1,0 +1,155 @@
+/* =============== BASE VARIABLES =============== */
+:root {
+  /* Colors */
+  --primary-color: #3eb0ef;
+  --primary-hover: #1e9fe8;
+  --text-color: #15171a;
+  --text-light: #738a94;
+  --background: #f8f8f8;
+  --white: #ffffff;
+  --black: #000000;
+  --gray-light: #e5eff5;
+  --gray-medium: #d9e3ed;
+  --border-color: #e7eef2;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, Monaco, Consolas, 'Courier New', monospace;
+  
+  /* Spacing */
+  --gap: 20px;
+  --radius: 5px;
+}
+
+/* =============== BASE STYLES =============== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =============== LAYOUT =============== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gap);
+}
+
+.main-content {
+  padding: 4rem 0;
+}
+
+/* =============== UTILITY CLASSES =============== */
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =============== HEADER STYLES =============== */
+.site-header {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--white);
+}
+
+.site-brand {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.site-title {
+  font-size: 3.2rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.site-description {
+  color: var(--text-light);
+  font-size: 1.8rem;
+  margin: 0.5rem 0 0;
+}
+
+/* =============== NAVIGATION =============== */
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.nav-item {
+  margin: 0 1.5rem;
+}
+
+.nav-link {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+/* =============== FOOTER STYLES =============== */
+.site-footer {
+  padding: 4rem 0;
+  background: var(--white);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-light);
+  font-size: 1.4rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.footer-section h3 {
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border-color);
+}

@@ -1,0 +1,62 @@
+{{!< default}}
+
+<main class="author-template">
+    {{#author}}
+    <header class="author-header">
+        <div class="author-container">
+            {{#if profile_image}}
+            <div class="author-image">
+                <img src="{{img_url profile_image size="xl"}}" alt="{{name}}" loading="lazy" />
+            </div>
+            {{/if}}
+            
+            <div class="author-info">
+                <h1 class="author-name">{{name}}</h1>
+                
+                {{#if bio}}
+                <div class="author-bio">
+                    {{bio}}
+                </div>
+                {{/if}}
+                
+                <div class="author-meta">
+                    <div class="author-stats">
+                        <span class="post-count">{{plural count.posts empty='No posts' singular='% post' plural='% posts'}}</span>
+                        {{#if location}}
+                        <span class="author-location">{{> "icons/location"}} {{location}}</span>
+                        {{/if}}
+                    </div>
+                    
+                    <div class="author-social">
+                        {{#if website}}
+                        <a href="{{website}}" target="_blank" rel="noopener noreferrer" aria-label="Website">
+                            {{> "icons/website"}}
+                        </a>
+                        {{/if}}
+                        {{#if twitter}}
+                        <a href="{{twitter_url}}" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            {{> "icons/twitter"}}
+                        </a>
+                        {{/if}}
+                        {{#if facebook}}
+                        <a href="{{facebook_url}}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            {{> "icons/facebook"}}
+                        </a>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    {{/author}}
+
+    <section class="author-posts">
+        <div class="post-feed">
+            {{#foreach posts}}
+                {{> "loop"}}
+            {{/foreach}}
+        </div>
+        
+        {{pagination}}
+    </section>
+</main>

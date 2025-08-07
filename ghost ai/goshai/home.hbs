@@ -1,0 +1,74 @@
+{{!< default}}
+
+{{!-- Hero section --}}
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">{{@site.title}}</h1>
+        <p class="hero-description">{{@site.description}}</p>
+        
+        {{#if @custom.hero_button_text}}
+        <a href="{{@custom.hero_button_link}}" class="hero-button">
+            {{@custom.hero_button_text}}
+        </a>
+        {{/if}}
+    </div>
+    
+    {{#if @custom.hero_image}}
+    <div class="hero-image">
+        <img src="{{@custom.hero_image}}" alt="{{@site.title}}" loading="lazy" />
+    </div>
+    {{/if}}
+</section>
+
+{{!-- Featured posts --}}
+{{#get "posts" filter="featured:true" limit="3" include="authors,tags"}}
+    {{#if posts}}
+    <section class="featured-posts">
+        <h2 class="section-title">Featured Stories</h2>
+        <div class="post-grid">
+            {{#foreach posts}}
+                {{> "post-card" featured=true}}
+            {{/foreach}}
+        </div>
+    </section>
+    {{/if}}
+{{/get}}
+
+{{!-- Regular posts --}}
+<section class="main-posts">
+    <h2 class="section-title">Latest Articles</h2>
+    
+    <div class="post-filters">
+        <button class="filter-button active" data-filter="all">All</button>
+        {{#get "tags" limit="5"}}
+            {{#foreach tags}}
+                <button class="filter-button" data-filter="{{slug}}">{{name}}</button>
+            {{/foreach}}
+        {{/get}}
+    </div>
+    
+    <div class="post-grid" id="post-grid">
+        {{#foreach posts}}
+            {{> "post-card"}}
+        {{/foreach}}
+    </div>
+    
+    {{pagination}}
+</section>
+
+{{!-- Newsletter CTA --}}
+<section class="newsletter-cta">
+    <div class="newsletter-content">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for the latest posts</p>
+        {{> "newsletter-form"}}
+    </div>
+</section>
+
+{{!-- Instagram feed (example) --}}
+{{#if @custom.instagram_access_token}}
+<section class="instagram-feed">
+    <h2 class="section-title">Follow Us on Instagram</h2>
+    <div class="instagram-posts" id="instagram-feed"></div>
+</section>
+{{/if}}

@@ -1,0 +1,45 @@
+{{!< default}}
+
+<main class="gh-main">
+  {{#if @member}}
+    {{!-- Untuk member yang sudah login --}}
+    <section class="welcome-member">
+      <h1>Welcome back, {{@member.name}}!</h1>
+      <p>You're logged in as {{@member.email}}</p>
+      <div class="member-actions">
+        <a href="/members/account/" class="button">My Account</a>
+        <a href="#/portal/account" class="button">Manage Subscription</a>
+      </div>
+    </section>
+  {{else}}
+    {{!-- Untuk pengunjung belum login --}}
+    <section class="cta-section">
+      <h1>{{@site.title}}</h1>
+      <p>{{@site.description}}</p>
+      <div class="cta-buttons">
+        <a href="/members/signup/" class="button primary">Sign Up</a>
+        <a href="/members/signin/" class="button secondary">Sign In</a>
+      </div>
+    </section>
+  {{/if}}
+
+  {{!-- Konten utama homepage --}}
+  <section class="featured-posts">
+    {{#get "posts" filter="featured:true" limit="3" as |featured|}}
+      {{#foreach featured}}
+        {{> "post-card"}}
+      {{/foreach}}
+    {{/get}}
+  </section>
+</main>
+
+<script>
+  // Script untuk menangani alur member
+  document.addEventListener('DOMContentLoaded', () => {
+    // Jika ada parameter success di URL (redirect dari signup)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('success') && !document.querySelector('.welcome-member')) {
+      window.location.href = '/members/signup/?success=true';
+    }
+  });
+</script>

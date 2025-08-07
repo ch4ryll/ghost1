@@ -1,0 +1,75 @@
+{{!< default}}
+
+<main class="gh-main">
+  <section class="error-content">
+    <h1>404 - Page Not Found</h1>
+    <p>The page you were looking for doesn't exist</p>
+    
+    {{#if @member}}
+      <div class="error-actions">
+        <a href="{{@site.url}}" class="button">Back to Home</a>
+        <a href="/members/account/" class="button">My Account</a>
+      </div>
+    {{else}}
+      <div class="error-actions">
+        <a href="{{@site.url}}" class="button">Back to Home</a>
+        <a href="/members/signup/" class="button">Become a Member</a>
+      </div>
+      
+      <div class="signup-form">
+        <form data-members-form="signup">
+          <input 
+            type="email" 
+            placeholder="Your email address" 
+            data-members-email
+            required
+          >
+          <button type="submit">Sign up</button>
+          <div class="message-success">
+            <span>Please check your inbox and click the link to complete signup.</span>
+          </div>
+          <div class="message-error">
+            <span>Something went wrong. Please try again.</span>
+          </div>
+        </form>
+      </div>
+    {{/if}}
+  </section>
+</main>
+
+<script>
+  // Shared members script dengan halaman lain
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('[data-members-form="signup"]');
+    
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = form.querySelector('[data-members-email]').value;
+
+        try {
+          const response = await fetch('/members/api/send-magic-link/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-Token': document.querySelector('meta[name="csrf-param"]').content
+            },
+            body: JSON.stringify({
+              email,
+              requestSrc: '404-page'
+            })
+          });
+
+          if (response.ok) {
+            form.querySelector('.message-success').style.display = 'block';
+            form.style.display = 'none';
+          } else {
+            throw new Error('Signup failed');
+          }
+        } catch (err) {
+          form.querySelector('.message-error').style.display = 'block';
+        }
+      });
+    }
+  });
+</script>

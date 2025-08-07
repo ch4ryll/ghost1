@@ -1,0 +1,22 @@
+<footer class="site-footer">
+    <div class="footer-content">
+        <section class="footer-section">
+            <h3>About {{@site.title}}</h3>
+            <p>{{@site.description}}</p>
+        </section>
+        
+        <section class="footer-section">
+            <h3>Quick Links</h3>
+            {{> navigation}}
+        </section>
+        
+        <section class="footer-section">
+            <h3>Connect</h3>
+            {{> social-links}}
+        </section>
+    </div>
+    
+    <div class="copyright">
+        &copy; {{date format="YYYY"}} {{@site.title}}. All rights reserved.
+    </div>
+</footer>

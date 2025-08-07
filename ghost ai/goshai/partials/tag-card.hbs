@@ -1,0 +1,15 @@
+<div class="tag-card">
+    {{#if feature_image}}
+        <a class="tag-image-link" href="{{url}}">
+            <img class="tag-image" src="{{img_url feature_image size="s"}}" alt="{{name}}">
+        </a>
+    {{/if}}
+    
+    <div class="tag-content">
+        <h3 class="tag-name"><a href="{{url}}">{{name}}</a></h3>
+        {{#if description}}
+            <p class="tag-description">{{description}}</p>
+        {{/if}}
+        <p class="tag-count">{{plural count.posts empty="No posts" singular="% post" plural="% posts"}}</p>
+    </div>
+</div>

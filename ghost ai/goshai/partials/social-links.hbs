@@ -1,0 +1,29 @@
+<ul class="social-links">
+    {{#if @site.facebook}}
+        <li>
+            <a href="{{@site.facebook}}" target="_blank" rel="noopener" aria-label="Facebook">
+                {{> "icons/facebook"}}
+            </a>
+        </li>
+    {{/if}}
+    
+    {{#if @site.twitter}}
+        <li>
+            <a href="{{@site.twitter}}" target="_blank" rel="noopener" aria-label="Twitter">
+                {{> "icons/twitter"}}
+            </a>
+        </li>
+    {{/if}}
+    
+    <li>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub">
+            {{> "icons/github"}}
+        </a>
+    </li>
+    
+    <li>
+        <a href="{{@site.url}}/rss/" target="_blank" rel="noopener" aria-label="RSS">
+            {{> "icons/rss"}}
+        </a>
+    </li>
+</ul>

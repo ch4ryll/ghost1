@@ -1,0 +1,62 @@
+{{!< default}}
+
+<main class="search-template">
+    <header class="search-header">
+        <h1 class="search-title">
+            {{#if posts}}
+                {{plural posts.length empty="No results found" singular="1 result found" plural="% results found"}}
+            {{else}}
+                Search the site
+            {{/if}}
+        </h1>
+        
+        <form class="search-form" id="search-form">
+            <input type="text" 
+                   id="search-input" 
+                   placeholder="Search articles..." 
+                   value="{{query}}" 
+                   autocomplete="off" 
+                   aria-label="Search" />
+            <button type="submit" aria-label="Search">
+                {{> "icons/search"}}
+            </button>
+        </form>
+    </header>
+
+    <section class="search-results" id="search-results">
+        {{#if posts}}
+            <div class="post-feed">
+                {{#foreach posts}}
+                    {{> "post-card"}}
+                {{/foreach}}
+            </div>
+        {{else}}
+            <div class="no-results">
+                {{#if query}}
+                    <p>No posts found for "{{query}}"</p>
+                {{else}}
+                    <p>Enter a search term above to find articles</p>
+                {{/if}}
+            </div>
+        {{/if}}
+    </section>
+</main>
+
+<script>
+// Client-side search functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    
+    if (searchForm) {
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = searchInput.value.trim();
+            if (query) {
+                window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            }
+        });
+    }
+});
+</script>

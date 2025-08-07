@@ -1,0 +1,20 @@
+{{!< default}}
+
+<main class="private-template">
+    <section class="private-content">
+        {{#if @member}}
+            {{#unless @member.paid}}
+                <h2>Upgrade your account</h2>
+                <p>This content is for paid members only. Upgrade your account to get access.</p>
+                <a href="/membership/" class="button">Choose a plan</a>
+            {{else}}
+                {{content}}
+            {{/unless}}
+        {{else}}
+            <h2>This is private content</h2>
+            <p>Sign up now to read this post and get access to all private posts.</p>
+            <a href="/signup/" class="button">Sign up now</a>
+            <p class="login-link">Already have an account? <a href="/signin/">Sign in</a></p>
+        {{/if}}
+    </section>
+</main>

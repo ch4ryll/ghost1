@@ -1,0 +1,66 @@
+{
+  "name": "ghost-advanced-theme",
+  "version": "2.0.0",
+  "description": "Modern Ghost CMS theme with advanced features",
+  "engines": {
+    "ghost": ">=5.0.0",
+    "ghost-api": "v5"
+  },
+  "author": {
+    "name": "Your Name",
+    "email": "your@email.com",
+    "url": "https://yourwebsite.com"
+  },
+  "config": {
+    "posts_per_page": 12,
+    "image_sizes": {
+      "xxs": {
+        "width": 30
+      },
+      "xs": {
+        "width": 100
+      },
+      "s": {
+        "width": 300
+      },
+      "m": {
+        "width": 600
+      },
+      "l": {
+        "width": 1000
+      },
+      "xl": {
+        "width": 2000
+      }
+    },
+    "card_assets": true,
+    "permalinks": "/:slug/",
+    "routes": {
+      "posts": "/blog/:slug/",
+      "pages": "/:slug/",
+      "tags": "/topic/:slug/",
+      "authors": "/author/:slug/"
+    }
+  },
+  "scripts": {
+    "dev": "gscan watch",
+    "build": "gscan zip",
+    "test": "gscan validate",
+    "zip": "gscan zip"
+  },
+  "dependencies": {
+    "@tryghost/helpers": "^1.0.0",
+    "@tryghost/url-utils": "^1.0.0"
+  },
+  "devDependencies": {
+    "gscan": "^5.0.0",
+    "postcss": "^8.4.0",
+    "autoprefixer": "^10.4.0",
+    "tailwindcss": "^3.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
+  ]
+}
